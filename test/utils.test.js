@@ -3,6 +3,7 @@ const {
 	flatten,
 	combine,
 	unique,
+	uniqueAndSort,
 } = require('../src/utils');
 
 describe('test/utils.test.js flatten', () => {
@@ -12,7 +13,7 @@ describe('test/utils.test.js flatten', () => {
 	it('should throw when parameter not be array', () => {
 		(() => {
 			flatten('arguments');
-		}).should.throw('arr.reduce is not a function');
+		}).should.throw('arr should be array');
 	});
 });
 
@@ -29,13 +30,18 @@ describe('test/utils.test.js unique', () => {
 	it('arr should be array', () => {
 		(() => {
 			unique('a');
-		}).should.throw('arr.filter is not a function');
+		}).should.throw('arr should be array');
 	});
 });
 
 describe('test/utils.test.js uniqueAndSort', () => {
 	it('should be array and length is 5', () => {
-		unique([ 6, 2, 3, 1, 4, 4, 4, 4 ]).should.be.Array();
-		unique([ 6, 2, 3, 1, 4, 4, 4, 4 ]).should.be.instanceof(Array).and.have.lengthOf(5);
+		uniqueAndSort([ 6, 2, 3, 1, 4, 4, 4, 4 ]).should.be.Array();
+		uniqueAndSort([ 6, 2, 3, 1, 4, 4, 4, 4 ]).should.be.instanceof(Array).and.have.lengthOf(5);
+	});
+	it('arr should be array', () => {
+		(() => {
+			uniqueAndSort('a');
+		}).should.throw('arr should be array');
 	});
 });

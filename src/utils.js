@@ -3,11 +3,15 @@
  * @param {Array} arr [xx,[xx,[]]]
  * @return {Array} arr [xx,xx,xx]
  */
-const flatten = arr =>
-	arr.reduce(
+const flatten = arr => {
+	if (!Array.isArray(arr)) {
+		throw new Error('arr should be array');
+	}
+	return arr.reduce(
 		(flat, next) => flat.concat(Array.isArray(next) ? flatten(next) : next),
 		[]
 	);
+};
 
 exports.flatten = flatten;
 
@@ -29,8 +33,13 @@ exports.combine = combine;
  * @param {Array} arr [xx, xx, xxx, xxxx]
  * @return {Array} arr [xx, xxx, xxxx]
  */
-const unique = arr =>
-	arr.filter((item, index) => arr.indexOf(item) === index);
+const unique = arr => {
+	if (!Array.isArray(arr)) {
+		throw new Error('arr should be array');
+	}
+	return arr.filter((item, index) => arr.indexOf(item) === index);
+};
+
 
 exports.unique = unique;
 
@@ -40,6 +49,9 @@ exports.unique = unique;
  * @return {Array} arr [x,xx,xxx,xxxx]
  */
 const uniqueAndSort = arr => {
+	if (!Array.isArray(arr)) {
+		throw new Error('arr should be array');
+	}
 	return arr.concat().sort().filter((item, index, arr) => {
 		return !index || item !== arr[index - 1];
 	});
