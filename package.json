@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "eslint-config-egg": "^7.1.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^5.2.0",
+    "should": "^13.2.3"
+  }
+}
