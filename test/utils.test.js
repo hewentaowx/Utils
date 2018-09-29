@@ -4,6 +4,12 @@ const {
 	combine,
 	unique,
 	uniqueAndSort,
+	isPhoneNo,
+	isEmail,
+	isValidReg,
+	isValidLength,
+	isValidUrl,
+	isValidPost,
 } = require('../src/utils');
 
 describe('test/utils.test.js flatten', () => {
@@ -43,5 +49,59 @@ describe('test/utils.test.js uniqueAndSort', () => {
 		(() => {
 			uniqueAndSort('a');
 		}).should.throw('arr should be array');
+	});
+});
+
+describe('test/utils.test.js isPhoneNo', () => {
+	it('isPhoneNo should be true', () => {
+		isPhoneNo(18671952691).should.be.exactly(true);
+	});
+	it('isPhoneNo should be false', () => {
+		isPhoneNo(11111111111).should.be.exactly(false);
+	});
+});
+
+describe('test/utils.test.js isEmail', () => {
+	it('isEmail should be true', () => {
+		isEmail('97791896@qq.com').should.be.exactly(true);
+	});
+	it('isEmail should be false', () => {
+		isEmail('977111@191896@qq.com').should.be.exactly(false);
+	});
+});
+
+describe('test/utils.test.js isValidReg', () => {
+	it('isValidReg should be false', () => {
+		isValidReg('97791896').should.be.exactly(false);
+	});
+	it('isValidReg should be true', () => {
+		isValidReg('977111ㄏ@191896@qq.com').should.be.exactly(true);
+	});
+}); isValidLength;
+
+describe('test/utils.test.js isValidLength', () => {
+	it('isValidLength should be true', () => {
+		isValidLength('97791896', 5).should.be.exactly(true);
+	});
+	it('isValidLength should be false', () => {
+		isValidLength('977111', 10).should.be.exactly(false);
+	});
+});
+
+describe('test/utils.test.js isValidUrl', () => {
+	it('isValidUrl should be true', () => {
+		isValidUrl('http://aaa.com').should.be.exactly(true);
+	});
+	it('isValidUrl should be false', () => {
+		isValidUrl('977111').should.be.exactly(false);
+	});
+});
+
+describe('test/utils.test.js isValidPost', () => {
+	it('isValidPost should be true', () => {
+		isValidPost('222222').should.be.exactly(true);
+	});
+	it('isValidPost should be false', () => {
+		isValidPost('2221222').should.be.exactly(false);
 	});
 });
