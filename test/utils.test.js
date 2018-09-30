@@ -10,6 +10,9 @@ const {
 	isValidLength,
 	isValidUrl,
 	isValidPost,
+	isLetters,
+	isIDCard,
+	isValidIP,
 } = require('../src/utils');
 
 describe('test/utils.test.js flatten', () => {
@@ -103,5 +106,32 @@ describe('test/utils.test.js isValidPost', () => {
 	});
 	it('isValidPost should be false', () => {
 		isValidPost('2221222').should.be.exactly(false);
+	});
+});
+
+describe('test/utils.test.js isLetters', () => {
+	it('isLetters should be true', () => {
+		isLetters('aaAZLDfkk').should.be.exactly(true);
+	});
+	it('isLetters should be false', () => {
+		isLetters('ASXCSz2').should.be.exactly(false);
+	});
+});
+
+describe('test/utils.test.js isIDCard', () => {
+	it('isIDCard should be true', () => {
+		isIDCard('420683199305014211').should.be.exactly(true);
+	});
+	it('isIDCard should be false', () => {
+		isIDCard('42068319930501421XX').should.be.exactly(false);
+	});
+});
+
+describe('test/utils.test.js isValidIP', () => {
+	it('isValidIP should be true', () => {
+		isValidIP('192.168.30.222').should.be.exactly(true);
+	});
+	it('isValidIP should be false', () => {
+		isValidIP('4.98.09.00A').should.be.exactly(false);
 	});
 });

@@ -75,6 +75,16 @@ const isEmail = elem => {
 exports.isEmail = isEmail;
 
 /**
+ * 判断是否为身份证号码
+ * @param {string} elem 控件值
+ * @return {boolean} 布尔值
+ */
+const isIDCard = elem => {
+	return (/^[1-9]{1}[0-9]{14}$|^[1-9]{1}[0-9]{16}([0-9]|[xX])$/.test(elem));
+};
+exports.isIDCard = isIDCard;
+
+/**
  * 判断是否有危险字符
  * @param {string} elem 控件值
  * @return {boolean} 布尔值
@@ -115,6 +125,16 @@ const isValidUrl = elem => {
 exports.isValidUrl = isValidUrl;
 
 /**
+ * 判断字符串是否为A-Za-z的英文字母
+ * @param {string} elem 控件值
+ * @return {boolean} 布尔值
+ */
+const isLetters = elem => {
+	return (/^[A-Za-z]+$/.test(elem));
+};
+exports.isLetters = isLetters;
+
+/**
  * 判断字符串是否邮政编码
  * @param {string} elem 控件值
  * @return {boolean} 布尔值
@@ -123,3 +143,14 @@ const isValidPost = elem => {
 	return (/^\d{6}$/.test(elem));
 };
 exports.isValidPost = isValidPost;
+
+/**
+ * 验证是否为ip
+ * @param {string} elem 控件值
+ * @return {boolean} 布尔值
+ */
+const isValidIP = elem => {
+	const reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/;
+	return reg.test(elem);
+};
+exports.isValidIP = isValidIP;
