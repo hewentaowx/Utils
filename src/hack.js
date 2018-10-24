@@ -32,3 +32,4 @@ console.log(result2);
 // 新办法
 const result3 = [ ...arr2, ...arr3 ];
 console.log(result3);
+

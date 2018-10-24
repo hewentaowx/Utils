@@ -19,25 +19,25 @@
 	],
 	"rules": {
 		"no-mixed-spaces-and-tabs": [
-			2, 
+			2,
 			false
-    ],
-    "no-proto": 0,
-    "no-new-wrappers": 0,
+		],
+		"no-proto": 0,
+		"no-new-wrappers": 0,
 		"no-var": 2,
 		"no-console": 0,
 		"no-unused-vars": 0,
-    "no-undef": 2,
-    "prefer-const": [
-      2, {"ignoreReadBeforeAssign": true}
-    ],
+		"no-undef": 2,
+		"prefer-const": [
+			2, {"ignoreReadBeforeAssign": true}
+		],
 		"indent": [
 			2,
 			"tab"
 		],
 		"linebreak-style": [
 			2,
-			"unix"
+			"windows"
 		],
 		"quotes": [
 			2,

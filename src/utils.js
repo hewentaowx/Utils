@@ -154,3 +154,32 @@ const isValidIP = elem => {
 	return reg.test(elem);
 };
 exports.isValidIP = isValidIP;
+
+/**
+ * 判断两子字符串是否是同态 egg和foo为同态 eig和egg为不同态
+ * @param {string} elem1 控件值1
+ * @param {string} elem2 控件值2
+ * @return {boolean} 布尔值
+ */
+const isIsomorphic = (elem1, elem2) => {
+	if (elem1.length !== elem2.length) {
+		return false;
+	}
+
+	const letterMap = {};
+	for (let i = 0; i < elem1.length; i++) {
+		const letterA = elem1[i];
+		const letterB = elem2[i];
+		if (letterMap[letterA] === undefined) {
+			if (elem2.indexOf(letterB) < i) {
+				return false;
+			}
+			letterMap[letterA] = letterB;
+		}
+		if (letterMap[letterA] !== letterB) {
+			return false;
+		}
+	}
+	return true;
+};
+exports.isIsomorphic = isIsomorphic;

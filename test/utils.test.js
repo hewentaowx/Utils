@@ -13,6 +13,7 @@ const {
 	isLetters,
 	isIDCard,
 	isValidIP,
+	isIsomorphic,
 } = require('../src/utils');
 
 describe('test/utils.test.js flatten', () => {
@@ -80,7 +81,7 @@ describe('test/utils.test.js isValidReg', () => {
 	it('isValidReg should be true', () => {
 		isValidReg('977111ㄏ@191896@qq.com').should.be.exactly(true);
 	});
-}); isValidLength;
+});
 
 describe('test/utils.test.js isValidLength', () => {
 	it('isValidLength should be true', () => {
@@ -133,5 +134,14 @@ describe('test/utils.test.js isValidIP', () => {
 	});
 	it('isValidIP should be false', () => {
 		isValidIP('4.98.09.00A').should.be.exactly(false);
+	});
+});
+
+describe('test/utils.test.js isIsomorphic', () => {
+	it('isIsomorphic should be true', () => {
+		isIsomorphic('egg', 'foo').should.be.exactly(true);
+	});
+	it('isIsomorphic should be false', () => {
+		isIsomorphic('egi', 'egg').should.be.exactly(false);
 	});
 });
