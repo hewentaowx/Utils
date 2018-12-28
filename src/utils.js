@@ -21,7 +21,7 @@ exports.flatten = flatten;
  * @return {Array} arr [xx, xx]
  */
 const combine = function() {
-	const arr = [].concat.apply([], arguments);
+    const arr = [].concat.apply([], arguments); // 因为伪数组是没有数组的那些方法的 concat 所以需要将类数组转换一下
 	return Array.from(new Set(arr));
 };
 exports.combine = combine;
