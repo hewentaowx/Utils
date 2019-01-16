@@ -28,4 +28,3 @@ console.log(animal.name);
 const obj = {}; // const obj = new Object()
 obj.name = 'hwt';
 console.log(obj.name);
-

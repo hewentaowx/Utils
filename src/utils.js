@@ -4,13 +4,13 @@
  * @return {Array} arr [xx,xx,xx]
  */
 const flatten = arr => {
-	if (!Array.isArray(arr)) {
-		throw new TypeError('arr should be array');
-	}
-	return arr.reduce(
-		(flat, next) => flat.concat(Array.isArray(next) ? flatten(next) : next),
-		[]
-	);
+  if (!Array.isArray(arr)) {
+    throw new TypeError('arr should be array');
+  }
+  return arr.reduce(
+    (flat, next) => flat.concat(Array.isArray(next) ? flatten(next) : next),
+    []
+  );
 };
 exports.flatten = flatten;
 
@@ -20,11 +20,26 @@ exports.flatten = flatten;
  * @param {Array} n arr [xx, xx]
  * @return {Array} arr [xx, xx]
  */
-const combine = function() {
-    const arr = [].concat.apply([], arguments); // 因为伪数组是没有数组的那些方法的 concat 所以需要将类数组转换一下
-	return Array.from(new Set(arr));
+const combine = function () {
+  const arr = [].concat.apply([], arguments); // 因为伪数组是没有数组的那些方法的 concat 所以需要将类数组转换一下
+  return Array.from(new Set(arr));
 };
 exports.combine = combine;
+
+/**
+ *
+ * @param {Array} arr1 数组1
+ * @param {Array} arr2 数组2
+ * @return {Array} arr 过滤出两个数组之间的差异
+ */
+const difference = (arr1, arr2) => {
+  if ((!Array.isArray(arr1)) && (!Array.isArray(arr2))) {
+    throw new TypeError('type is error');
+  }
+  const s = new Set(arr2);
+  return arr1.filter(x => !s.has(x));
+};
+exports.difference = difference;
 
 /**
  * 去除数组中重复元素
@@ -32,10 +47,10 @@ exports.combine = combine;
  * @return {Array} arr [xx, xxx, xxxx]
  */
 const unique = arr => {
-	if (!Array.isArray(arr)) {
-		throw new TypeError('arr should be array');
-	}
-	return arr.filter((item, index) => arr.indexOf(item) === index);
+  if (!Array.isArray(arr)) {
+    throw new TypeError('arr should be array');
+  }
+  return arr.filter((item, index) => arr.indexOf(item) === index);
 };
 exports.unique = unique;
 
@@ -45,12 +60,12 @@ exports.unique = unique;
  * @return {Array} arr [x,xx,xxx,xxxx]
  */
 const uniqueAndSort = arr => {
-	if (!Array.isArray(arr)) {
-		throw new TypeError('arr should be array');
-	}
-	return arr.concat().sort().filter((item, index, arr) => {
-		return !index || item !== arr[index - 1];
-	});
+  if (!Array.isArray(arr)) {
+    throw new TypeError('arr should be array');
+  }
+  return arr.concat().sort().filter((item, index, arr) => {
+    return !index || item !== arr[index - 1];
+  });
 };
 exports.uniqueAndSort = uniqueAndSort;
 
@@ -60,7 +75,7 @@ exports.uniqueAndSort = uniqueAndSort;
  * @return {boolean} 布尔值
  */
 const isPhoneNo = elem => {
-	return (/^(0|86|17951)?(13[0-9]|15[012356789]|18[0-9]|14[57]|17[0-9])[0-9]{8}$/.test(elem));
+  return (/^(0|86|17951)?(13[0-9]|15[012356789]|18[0-9]|14[57]|17[0-9])[0-9]{8}$/.test(elem));
 };
 exports.isPhoneNo = isPhoneNo;
 
@@ -70,7 +85,7 @@ exports.isPhoneNo = isPhoneNo;
  * @return {boolean} 布尔值
  */
 const isEmail = elem => {
-	return (/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/.test(elem));
+  return (/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/.test(elem));
 };
 exports.isEmail = isEmail;
 
@@ -80,7 +95,7 @@ exports.isEmail = isEmail;
  * @return {boolean} 布尔值
  */
 const isIDCard = elem => {
-	return (/^[1-9]{1}[0-9]{14}$|^[1-9]{1}[0-9]{16}([0-9]|[xX])$/.test(elem));
+  return (/^[1-9]{1}[0-9]{14}$|^[1-9]{1}[0-9]{16}([0-9]|[xX])$/.test(elem));
 };
 exports.isIDCard = isIDCard;
 
@@ -90,8 +105,8 @@ exports.isIDCard = isIDCard;
  * @return {boolean} 布尔值
  */
 const isValidReg = elem => {
-	const reg = /<|>|\[|\]|\{|\}|『|』|※|○|●|◎|§|△|▲|☆|★|◇|◆|□|▼|㊣|﹋|⊕|⊙|〒|ㄅ|ㄆ|ㄇ|ㄈ|ㄉ|ㄊ|ㄋ|ㄌ|ㄍ|ㄎ|ㄏ|ㄐ|ㄑ|ㄒ|ㄓ|ㄔ|ㄕ|ㄖ|ㄗ|ㄘ|ㄙ|ㄚ|ㄛ|ㄜ|ㄝ|ㄞ|ㄟ|ㄢ|ㄣ|ㄤ|ㄥ|ㄦ|ㄧ|ㄨ|ㄩ|■|▄|▆|\*|@|#|\^|\\/;
-	return reg.test(elem);
+  const reg = /<|>|\[|\]|\{|\}|『|』|※|○|●|◎|§|△|▲|☆|★|◇|◆|□|▼|㊣|﹋|⊕|⊙|〒|ㄅ|ㄆ|ㄇ|ㄈ|ㄉ|ㄊ|ㄋ|ㄌ|ㄍ|ㄎ|ㄏ|ㄐ|ㄑ|ㄒ|ㄓ|ㄔ|ㄕ|ㄖ|ㄗ|ㄘ|ㄙ|ㄚ|ㄛ|ㄜ|ㄝ|ㄞ|ㄟ|ㄢ|ㄣ|ㄤ|ㄥ|ㄦ|ㄧ|ㄨ|ㄩ|■|▄|▆|\*|@|#|\^|\\/;
+  return reg.test(elem);
 };
 exports.isValidReg = isValidReg;
 
@@ -102,7 +117,7 @@ exports.isValidReg = isValidReg;
  * @return {boolean} 布尔值
  */
 const isValidLength = (chars, len) => {
-	return !(chars.length < len);
+  return !(chars.length < len);
 };
 exports.isValidLength = isValidLength;
 
@@ -112,15 +127,15 @@ exports.isValidLength = isValidLength;
  * @return {boolean} 布尔值
  */
 const isValidUrl = elem => {
-	const reg = /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(\S+\.\S+)$/;
-	if (!(elem === null)) {
-		elem = elem.replace(/\s+/g, '');
-		if (elem.match(reg) === null) {
-			return false;
-		}
-		return true;
-	}
-	return false;
+  const reg = /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(\S+\.\S+)$/;
+  if (!(elem === null)) {
+    elem = elem.replace(/\s+/g, '');
+    if (elem.match(reg) === null) {
+      return false;
+    }
+    return true;
+  }
+  return false;
 };
 exports.isValidUrl = isValidUrl;
 
@@ -130,7 +145,7 @@ exports.isValidUrl = isValidUrl;
  * @return {boolean} 布尔值
  */
 const isLetters = elem => {
-	return (/^[A-Za-z]+$/.test(elem));
+  return (/^[A-Za-z]+$/.test(elem));
 };
 exports.isLetters = isLetters;
 
@@ -140,7 +155,7 @@ exports.isLetters = isLetters;
  * @return {boolean} 布尔值
  */
 const isValidPost = elem => {
-	return (/^\d{6}$/.test(elem));
+  return (/^\d{6}$/.test(elem));
 };
 exports.isValidPost = isValidPost;
 
@@ -150,8 +165,8 @@ exports.isValidPost = isValidPost;
  * @return {boolean} 布尔值
  */
 const isValidIP = elem => {
-	const reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/;
-	return reg.test(elem);
+  const reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/;
+  return reg.test(elem);
 };
 exports.isValidIP = isValidIP;
 
@@ -162,24 +177,24 @@ exports.isValidIP = isValidIP;
  * @return {boolean} 布尔值
  */
 const isIsomorphic = (elem1, elem2) => {
-	if (elem1.length !== elem2.length) {
-		return false;
-	}
+  if (elem1.length !== elem2.length) {
+    return false;
+  }
 
-	const letterMap = {};
-	for (let i = 0; i < elem1.length; i++) {
-		const letterA = elem1[i];
-		const letterB = elem2[i];
-		if (letterMap[letterA] === undefined) {
-			if (elem2.indexOf(letterB) < i) {
-				return false;
-			}
-			letterMap[letterA] = letterB;
-		}
-		if (letterMap[letterA] !== letterB) {
-			return false;
-		}
-	}
-	return true;
+  const letterMap = {};
+  for (let i = 0; i < elem1.length; i++) {
+    const letterA = elem1[i];
+    const letterB = elem2[i];
+    if (letterMap[letterA] === undefined) {
+      if (elem2.indexOf(letterB) < i) {
+        return false;
+      }
+      letterMap[letterA] = letterB;
+    }
+    if (letterMap[letterA] !== letterB) {
+      return false;
+    }
+  }
+  return true;
 };
 exports.isIsomorphic = isIsomorphic;
