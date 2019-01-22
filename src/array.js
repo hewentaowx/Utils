@@ -99,7 +99,29 @@ console.log(copy); // [1, 2, 3, 4, 5]
 
 /**
  * reduce()方法对数组中的每一个元素执行一次函数并将结果汇总为一个值。另外reduce也可作为高阶函数用于函数的compose
+ *
+ * 语法：
+ * arr.reduce(callback(accumulator[, currentValue[, currentIndex[, array]]]))[, initialValue]
+ *
+ * 参数说明：
+ * accumulator          累计器累计回调的返回值或initialValue
+ * currentValue         数组中正在处理的元素
+ * currentIndex(可选)   数组中正在处理的元素的索引
+ * array(可选)          调用reduce()的数组
+ * initialValue(可选)   第一次调用callback函数的第一个参数值
  */
+// 返回累积值
+const arr4 = [1, 2, 3, 4, 5];
+const arr4_result = arr4.reduce((a, c) => {
+  return a + c;
+});
+console.log(arr4_result); // 15
+
+const arr5 = [1, 2, 3, 4, 5];
+const arr5_result = arr5.reduce((a, c) => {
+  return a + c;
+}, 10);
+console.log(arr5_result); // 25
 
 /**
  * for...in
